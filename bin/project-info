@@ -1,0 +1,23 @@
+#!/bin/bash
+# Show basic project info
+
+echo "=== Project Info ==="
+echo "Directory: $(pwd)"
+
+if [ -f "package.json" ]; then
+  echo "Type: Node.js"
+  echo "Name: $(node -p "require('./package.json').name" 2>/dev/null || echo 'unknown')"
+  echo "Version: $(node -p "require('./package.json').version" 2>/dev/null || echo 'unknown')"
+elif [ -f "requirements.txt" ]; then
+  echo "Type: Python"
+  echo "Dependencies: $(wc -l < requirements.txt) packages"
+elif [ -f "go.mod" ]; then
+  echo "Type: Go"
+  echo "Module: $(head -1 go.mod)"
+else
+  echo "Type: Unknown"
+fi
+
+echo "Files: $(find . -maxdepth 2 -type f | wc -l) files (depth 2)"
+echo "Git: $(git branch --show-current 2>/dev/null || echo 'not a git repo')"
+echo "==================="

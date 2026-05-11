@@ -1,0 +1,5 @@
+{
+  "name": "ldz-claude-plugin",
+  "description": "A demo plugin showing skills, agents, hooks, and CLI tools",
+  "version": "1.0.0"
+}
