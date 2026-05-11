@@ -41,15 +41,37 @@ export default {
         );
       }
 
-      // GET /api/recall — 检索记忆
+      // GET /api/recall — 模糊检索记忆
       if (path === "/api/recall" && request.method === "GET") {
         const query = url.searchParams.get("q");
 
         let stmt;
         if (query) {
+          // 将查询拆分为多个 token，支持中英文混合模糊搜索
+          // 英文按空格/标点分词，中文按单字拆分
+          const tokens: string[] = [];
+          const parts = query.split(/[\s,，。.!！?？、]+/).filter(Boolean);
+          for (const part of parts) {
+            if (/[一-鿿]/.test(part)) {
+              // 中文部分：逐字拆分 + 保留整体
+              for (const ch of part) {
+                tokens.push(ch);
+              }
+            }
+            // 非中文部分（英文/数字）：作为整体 token
+            const alpha = part.replace(/[一-鿿]/g, "").trim();
+            if (alpha) {
+              tokens.push(alpha);
+            }
+          }
+
+          // 用 AND 连接所有 token，确保越具体匹配越精确
+          const conditions = tokens.map(() => "content LIKE ?").join(" AND ");
+          const bindings = tokens.map((t) => `%${t}%`);
+
           stmt = env.DB.prepare(
-            "SELECT * FROM memories WHERE content LIKE ? ORDER BY created_at DESC LIMIT 20"
-          ).bind(`%${query}%`);
+            `SELECT * FROM memories WHERE ${conditions} ORDER BY created_at DESC LIMIT 20`
+          ).bind(...bindings);
         } else {
           stmt = env.DB.prepare(
             "SELECT * FROM memories ORDER BY created_at DESC LIMIT 20"
