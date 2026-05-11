@@ -1,5 +1,8 @@
 {
   "name": "ldz-marketplace",
+  "owner": {
+    "name": "lidianzhong"
+  },
   "description": "A marketplace for ldz Claude Code plugins",
   "plugins": [
     {
