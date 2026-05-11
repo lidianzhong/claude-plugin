@@ -13,10 +13,10 @@ model: haiku
 当用户说"帮我查查"或使用 `/recall` 时，搜索相关记忆。
 
 1. 从 `$ARGUMENTS` 中提取搜索关键词
-2. 有关键词则搜索（中文关键词需 URL 编码）：
+2. 有关键词则搜索（自动处理中文编码）：
 
 ```bash
-curl -s "https://memory-worker.hzau.top/api/recall?q=URL编码后的关键词"
+curl -s -G "https://memory-worker.hzau.top/api/recall" --data-urlencode "q=关键词"
 ```
 
 3. 无关键词则列出最近记忆：

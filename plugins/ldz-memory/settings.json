@@ -2,8 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(curl *memory-worker.hzau.top*)",
-      "Bash(echo *memory.json*)",
-      "Bash(cat /tmp/memory.json*)"
+      "Bash(echo *memory*)",
+      "Bash(printf *memory*)",
+      "Bash(cat *memory*)",
+      "Bash(rm *memory*)",
+      "Bash(head *memory*)"
     ]
   }
 }
