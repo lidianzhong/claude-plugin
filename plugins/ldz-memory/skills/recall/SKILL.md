@@ -1,3 +1,9 @@
+---
+name: recall
+description: 从云端记忆库中搜索和检索记忆
+model: haiku
+---
+
 # Recall Skill
 
 从云端记忆库中搜索和检索已保存的记忆。

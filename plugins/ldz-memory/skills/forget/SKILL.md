@@ -1,3 +1,9 @@
+---
+name: forget
+description: 从云端记忆库中删除记忆
+model: haiku
+---
+
 # Forget Skill
 
 从云端记忆库中删除保存的记忆。

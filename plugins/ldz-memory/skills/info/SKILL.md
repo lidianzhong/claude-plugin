@@ -1,3 +1,9 @@
+---
+name: info
+description: 展示 ldz-memory 插件的用法
+model: haiku
+---
+
 # Info Skill
 
 展示 ldz-memory 插件的功能和使用方法。

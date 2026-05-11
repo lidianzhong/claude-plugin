@@ -1,3 +1,9 @@
+---
+name: remember
+description: 保存内容到云端记忆库
+model: haiku
+---
+
 # Remember Skill
 
 将用户的内容保存到云端记忆库。
