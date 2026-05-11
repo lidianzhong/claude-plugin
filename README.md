@@ -14,7 +14,7 @@
 
 ### my-memory — 共享记忆插件
 
-<video src="static/video1.mp4" controls width="600"></video>
+![demo](static/video1.gif)
 
 | 命令 | 用法 | 说明 |
 |------|------|------|
