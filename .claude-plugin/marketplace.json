@@ -9,6 +9,11 @@
       "name": "ldz-claude-plugin",
       "description": "A demo plugin showing skills, agents, hooks, and CLI tools",
       "source": "./plugins/ldz-claude-plugin"
+    },
+    {
+      "name": "ldz-claude-plugin1",
+      "description": "Second demo plugin",
+      "source": "./plugins/ldz-claude-plugin1"
     }
   ]
 }
