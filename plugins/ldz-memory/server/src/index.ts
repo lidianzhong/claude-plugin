@@ -9,7 +9,7 @@ export default {
 
     const corsHeaders = {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+      "Access-Control-Allow-Methods": "GET, POST, DELETE, OPTIONS",
       "Access-Control-Allow-Headers": "Content-Type",
       "Content-Type": "application/json; charset=utf-8",
     };
@@ -60,6 +60,36 @@ export default {
         return Response.json(
           { success: true, data: results.results },
           { headers: corsHeaders }
+        );
+      }
+
+      // DELETE /api/forget — 删除记忆
+      if (path === "/api/forget" && request.method === "DELETE") {
+        const id = url.searchParams.get("id");
+
+        if (id) {
+          await env.DB.prepare("DELETE FROM memories WHERE id = ?")
+            .bind(parseInt(id))
+            .run();
+          return Response.json({ success: true, deleted: id }, { headers: corsHeaders });
+        }
+
+        const query = url.searchParams.get("q");
+        if (query) {
+          const result = await env.DB.prepare(
+            "DELETE FROM memories WHERE content LIKE ?"
+          )
+            .bind(`%${query}%`)
+            .run();
+          return Response.json(
+            { success: true, deleted_count: result.meta.changes },
+            { headers: corsHeaders }
+          );
+        }
+
+        return Response.json(
+          { error: "id or q parameter is required" },
+          { status: 400, headers: corsHeaders }
         );
       }
 
