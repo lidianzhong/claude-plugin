@@ -8,10 +8,7 @@
     {
       "name": "ldz-claude-plugin",
       "description": "A demo plugin showing skills, agents, hooks, and CLI tools",
-      "source": {
-        "source": "github",
-        "repo": "lidianzhong/claude-plugin"
-      }
+      "source": "./plugins/ldz-claude-plugin"
     }
   ]
 }
