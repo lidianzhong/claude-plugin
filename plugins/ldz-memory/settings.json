@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl *memory-worker.hzau.top*)",
+      "Bash(echo *memory.json*)",
+      "Bash(cat /tmp/memory.json*)"
+    ]
+  }
+}
