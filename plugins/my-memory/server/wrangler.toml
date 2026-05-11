@@ -1,0 +1,9 @@
+name = "memory-worker"
+main = "src/index.ts"
+compatibility_date = "2024-01-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "memory-db"
+database_id = "0aa4a3d9-856b-4071-aa3f-34776a468831"

@@ -16,9 +16,9 @@
       "source": "./plugins/ldz-claude-plugin1"
     },
     {
-      "name": "ldz-memory",
+      "name": "my-memory",
       "description": "云端记忆插件 - 支持保存和检索记忆",
-      "source": "./plugins/ldz-memory"
+      "source": "./plugins/my-memory"
     }
   ]
 }

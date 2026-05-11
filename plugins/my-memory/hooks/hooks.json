@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "last_msg=$(git log -1 --format=%s 2>/dev/null); if [[ \"$last_msg\" != bump\\ my-memory* ]]; then REPO=$(git rev-parse --show-toplevel 2>/dev/null); PLUGIN=\"$REPO/plugins/my-memory\"; if [ -f \"$PLUGIN/bin/bump-version\" ] && [ -f \"$PLUGIN/.claude-plugin/plugin.json\" ]; then bash \"$PLUGIN/bin/bump-version\" patch && cd \"$REPO\" && git add \"$PLUGIN/.claude-plugin/plugin.json\" && git commit -m \"bump my-memory to v$(grep '\"version\"' \"$PLUGIN/.claude-plugin/plugin.json\" | sed 's/.*: *\"\\(.*\\)\".*/\\1/')\" && git push; fi; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
