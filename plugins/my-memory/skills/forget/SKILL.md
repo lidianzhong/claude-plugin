@@ -2,6 +2,7 @@
 name: forget
 description: 从云端记忆库中删除记忆
 model: haiku
+effort: low
 ---
 
 # Forget Skill

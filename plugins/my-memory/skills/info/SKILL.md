@@ -2,6 +2,7 @@
 name: info
 description: 展示 my-memory 插件的用法
 model: haiku
+effort: low
 ---
 
 # Info Skill
